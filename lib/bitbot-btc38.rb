@@ -43,4 +43,4 @@ module BitBot
   end
 end
 
-BitBot.define :okcoin, BitBot::OKCoin
+BitBot.define :btc38, BitBot::Btc38
