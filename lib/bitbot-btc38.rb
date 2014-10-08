@@ -17,10 +17,6 @@ module BitBot
     end
 
     def offers
-      #uri = URI('http://api.btc38.com/v1/depth.php?c=btsx&mk_type=cny')
-      #body = Net::HTTP.get_response(uri).body
-      #resp = JSON.parse body
-
       resp = get('http://api.btc38.com/v1/depth.php?c=btsx&mk_type=cny')
       check_response(resp)
 
@@ -45,7 +41,7 @@ module BitBot
       request.initialize_http_header({"User-Agent" => "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.124 Safari/537.36"})
 
       resp = http.request(request)
-      JSON.parse resp.body
+      JSON.parse resp.body.gsub(/[^\w\[\],.:"\{\}]/, '')
     end
 
     def check_response(response)
